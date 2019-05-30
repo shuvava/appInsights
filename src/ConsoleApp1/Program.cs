@@ -6,6 +6,7 @@ using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.ApplicationInsights;
 
 using Shuvava.Extensions.Logging.ApplicationInsights;
 
@@ -52,6 +53,7 @@ namespace ConsoleApp1
                 {
                     loggingBuilder
                         .AddConsole()
+                        .AddFilter<ApplicationInsightsLoggerProvider>("", LogLevel.Trace)
                         .AddApplicationInsights(key)
                         //.AddConfiguration(configuration.GetSection("Logging"))
                         ;

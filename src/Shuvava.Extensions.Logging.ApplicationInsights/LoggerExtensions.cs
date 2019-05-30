@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Shuvava.Extensions.Logging.ApplicationInsights
 {
+    //https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Host/Loggers/Logger/LoggerExtensions.cs
     public static class LoggerExtensions
     {
         /// <summary>
