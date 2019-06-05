@@ -34,6 +34,8 @@ namespace ConsoleApp1
             sample.Name = "metric name";
             sample.Count = 1;
             telemetryClient.TrackMetric(sample);
+//            Metric test = telemetryClient.GetMetric("test");
+//            test.TrackValue(1.0, "metric dimension");
             logger.LogMetric($"Metric{run}", 1);
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();

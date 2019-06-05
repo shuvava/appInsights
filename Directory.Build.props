@@ -1,0 +1,30 @@
+<Project>
+    <PropertyGroup>
+        <!-- Repository and project URLs (used in nuget packages) -->
+        <RepositoryUrl>https://github.com/shuvava/appInsights.git</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/shuvava/appInsights/blob/master/README.md</PackageProjectUrl>
+    </PropertyGroup>
+    <PropertyGroup>
+        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+        <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+        <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+        <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+        <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+        <GenerateNeutralResourcesLanguageAttribute>false</GenerateNeutralResourcesLanguageAttribute>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Company>Home Inc</Company>
+        <LangVersion>latest</LangVersion>
+        <Copyright>shuvava</Copyright>
+    </PropertyGroup>
+    <PropertyGroup>
+        <NerdbankGitVersioning>2.2.33</NerdbankGitVersioning>
+        <MsLogging>2.1.1</MsLogging>
+        <MsConfiguration>2.1.1</MsConfiguration>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <OutputPath>$(SolutionDir)build\$(MSBuildProjectName)\bin\$(Configuration)</OutputPath>
+        <BaseIntermediateOutputPath>..\..\build\$(MSBuildProjectName)\obj</BaseIntermediateOutputPath>
+    </PropertyGroup>
+</Project>
