@@ -9,4 +9,8 @@
       <ProjectReference Include="..\..\src\Shuvava.Extensions.Metrics\Shuvava.Extensions.Metrics.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    </ItemGroup>
+
 </Project>
