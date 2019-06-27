@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Shuvava.Extensions.Logging.ApplicationInsights\Shuvava.Extensions.Logging.ApplicationInsights.csproj" />
+      <ProjectReference Include="..\..\src\Shuvava.Extensions.Logging.ApplicationInsights\Shuvava.Extensions.Logging.ApplicationInsights.csproj" />
     </ItemGroup>
 
     <ItemGroup>

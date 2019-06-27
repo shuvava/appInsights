@@ -1,8 +1,8 @@
 <Project>
     <PropertyGroup>
         <!-- Repository and project URLs (used in nuget packages) -->
-        <RepositoryUrl>https://github.com/shuvava/appInsights.git</RepositoryUrl>
-        <PackageProjectUrl>https://github.com/shuvava/appInsights/blob/master/README.md</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/shuvava/csharp_metrics.git</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/shuvava/csharp_metrics/blob/master/README.md</PackageProjectUrl>
     </PropertyGroup>
     <PropertyGroup>
         <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
@@ -19,8 +19,11 @@
     </PropertyGroup>
     <PropertyGroup>
         <NerdbankGitVersioning>2.2.33</NerdbankGitVersioning>
-        <MsLogging>2.1.1</MsLogging>
-        <MsConfiguration>2.1.1</MsConfiguration>
+        <NewtonsoftJson>12.0.2</NewtonsoftJson>
+        <MsLogging>2.2.0</MsLogging>
+        <MsConfiguration>2.2.0</MsConfiguration>
+        <MsOptions>2.2.0</MsOptions>
+        <MsHosting>2.2.0</MsHosting>
     </PropertyGroup>
     
     <PropertyGroup>
