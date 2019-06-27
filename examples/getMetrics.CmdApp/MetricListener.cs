@@ -13,7 +13,8 @@ namespace getMetrics.CmdApp
     {
         private readonly JsonSerializerSettings _settings;
 
-        public MetricListener(bool enableAllocationEvents = false):base(enableAllocationEvents)
+
+        public MetricListener()
         {
             _settings = new JsonSerializerSettings
             {
@@ -23,6 +24,9 @@ namespace getMetrics.CmdApp
                 Formatting = Formatting.Indented
             };
         }
+
+
+        protected override bool _enableAllocationEvents { get; } = true;
 
 
         protected override void ProcessAllocationEvent(GCMemoryAllocation eventData)
@@ -36,13 +40,6 @@ namespace getMetrics.CmdApp
         {
             var result = JsonConvert.SerializeObject(eventData, _settings);
             Console.WriteLine($"{nameof(ProcessHeapStats)}: {result}");
-        }
-
-
-        public void Dispose()
-        {
-
-            base.Dispose();
         }
     }
 }
