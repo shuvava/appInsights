@@ -5,9 +5,6 @@ using Shuvava.Extensions.Metrics.Models;
 
 
 // ReSharper disable InconsistentNaming
-
-
-
 namespace Shuvava.Extensions.Metrics
 {
     public static class DotNetGC

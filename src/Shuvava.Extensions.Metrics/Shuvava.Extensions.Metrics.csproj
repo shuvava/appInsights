@@ -2,9 +2,13 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Shuvava.Extensions.Metrics</Title>
+        <PackageTags>metric GC memory cpu</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Nerdbank.GitVersioning" Version="$(NerdbankGitVersioning)" />
       <PackageReference Include="System.Diagnostics.Tracing" Version="4.3.0" />
     </ItemGroup>
 

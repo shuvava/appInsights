@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime;
 using System.Threading;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
 using Shuvava.Extensions.Metrics;
@@ -16,9 +18,16 @@ namespace getMetrics.CmdApp
         private static void Main(string[] args)
         {
             Console.WriteLine("Application started!");
+
+            //change GC settings
+            GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
+
+            var gcConfig = DotNetGC.GetConfig();
+            Print(gcConfig);
+
             var sysUsageCollector = new ProcessSystemUsageCollector();
             var stat = sysUsageCollector.CollectData();
-            PrintSysUsage(stat);
+            Print(stat);
 
             var test = Enumerable.Repeat((long) 10, 1_000_000).ToArray();
 
@@ -43,7 +52,7 @@ namespace getMetrics.CmdApp
 
             PrintGcStat();
             stat = sysUsageCollector.CollectData();
-            PrintSysUsage(stat);
+            Print(stat);
 
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
@@ -62,18 +71,18 @@ namespace getMetrics.CmdApp
             Console.WriteLine($"GC gen2 count of objects {gen2}");
         }
 
-
-        private static void PrintSysUsage(ProcessSystemUsage stat)
+        private static void Print<T>(T obj)
         {
             var _settings = new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore,
                 MissingMemberHandling = MissingMemberHandling.Ignore,
-                Formatting = Formatting.Indented
+                Formatting = Formatting.Indented,
             };
+            _settings.Converters.Add(new StringEnumConverter { NamingStrategy = new CamelCaseNamingStrategy() });
 
-            var result = JsonConvert.SerializeObject(stat, _settings);
+            var result = JsonConvert.SerializeObject(obj, _settings);
             Console.WriteLine($"{nameof(ProcessSystemUsageCollector)}: {result}");
         }
     }
