@@ -5,6 +5,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>Shuvava.Extensions.Metrics.Hosting</Title>
         <PackageTags>metric GC memory cpu</PackageTags>
+        <PackageVersion />
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,7 +13,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Nerdbank.GitVersioning" Version="$(NerdbankGitVersioning)" />
       <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="$(MsHosting)" />
       <PackageReference Include="Microsoft.Extensions.Options" Version="$(MsOptions)" />
     </ItemGroup>

@@ -1,0 +1,83 @@
+version: '3'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.2.0
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+    expose:
+      - "5959"
+    ports:
+      - "5959:5959"
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.2.0
+    ports:
+      - "5601:5601"
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
+  metricbeat:
+    image: docker.elastic.co/beats/metricbeat:7.2.0
+    volumes:
+      - ./metricbeat/metricbeat.docker.yml:/usr/share/metricbeat/metricbeat.yml
+    environment:
+      - ELASTICSEARCH_HOSTS=elasticsearch:9200
+      - KIBANA_HOST=kibana:5601
+    links:
+      - elasticsearch
+      - kibana
+    depends_on:
+      - elasticsearch
+      - kibana
+  # prometheus:
+  #   image: prom/prometheus
+  #   ports:
+  #     - "9090:9090"
+  #   volumes:
+  #     - ./prometheus/data:/prometheus
+  #     - ./prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml
+    # links:
+    #   - web
+  # grafana:
+  #   image: grafana/grafana
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./grafana/data:/var/lib/grafana
+  #   # environment:
+  #   #   - GF_INSTALL_PLUGINS=
+  #   links:
+  #     - elasticsearch
+  #     - prometheus
+  #   depends_on:
+  #     - elasticsearch
+  #     - prometheus
+  # web:
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: ./rest_api
+  #   hostname: rest-api
+  #   environment:
+  #     - REDIS_HOST=redis
+  #   ports:
+  #     - "8888:8888"
+  #   links:
+  #     - logstash
+  #     - elasticsearch
+  #     - redis
+  #   depends_on:
+  #     - redis

@@ -1,33 +1,38 @@
 <Project>
-    <PropertyGroup>
-        <!-- Repository and project URLs (used in nuget packages) -->
-        <RepositoryUrl>https://github.com/shuvava/csharp_metrics.git</RepositoryUrl>
-        <PackageProjectUrl>https://github.com/shuvava/csharp_metrics/blob/master/README.md</PackageProjectUrl>
-    </PropertyGroup>
-    <PropertyGroup>
-        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-        <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-        <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-        <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-        <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-        <GenerateNeutralResourcesLanguageAttribute>false</GenerateNeutralResourcesLanguageAttribute>
-    </PropertyGroup>
-    <PropertyGroup>
-        <Company>Home Inc</Company>
-        <LangVersion>latest</LangVersion>
-        <Copyright>shuvava</Copyright>
-    </PropertyGroup>
-    <PropertyGroup>
-        <NerdbankGitVersioning>2.3.183</NerdbankGitVersioning>
-        <NewtonsoftJson>12.0.2</NewtonsoftJson>
-        <MsLogging>2.2.0</MsLogging>
-        <MsConfiguration>2.2.0</MsConfiguration>
-        <MsOptions>2.2.0</MsOptions>
-        <MsHosting>2.2.0</MsHosting>
-    </PropertyGroup>
-    
-    <PropertyGroup>
-        <OutputPath>$(SolutionDir)build\$(MSBuildProjectName)\bin\$(Configuration)</OutputPath>
-        <BaseIntermediateOutputPath>..\..\build\$(MSBuildProjectName)\obj</BaseIntermediateOutputPath>
-    </PropertyGroup>
+  <PropertyGroup>
+    <!-- Repository and project URLs (used in nuget packages) -->
+    <RepositoryUrl>https://github.com/shuvava/csharp_metrics.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/shuvava/csharp_metrics/blob/master/README.md</PackageProjectUrl>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateNeutralResourcesLanguageAttribute>false</GenerateNeutralResourcesLanguageAttribute>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Company>Home Inc</Company>
+    <LangVersion>latest</LangVersion>
+    <Copyright>shuvava</Copyright>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NerdbankGitVersioning>2.3.183</NerdbankGitVersioning>
+    <NewtonsoftJson>12.0.2</NewtonsoftJson>
+    <MsLogging>2.2.0</MsLogging>
+    <MsConfiguration>2.2.0</MsConfiguration>
+    <MsOptions>2.2.0</MsOptions>
+    <MsHosting>2.2.0</MsHosting>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputPath>$(SolutionDir)build\$(MSBuildProjectName)\bin\$(Configuration)</OutputPath>
+    <BaseIntermediateOutputPath>..\..\build\$(MSBuildProjectName)\obj</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning">
+      <Version>2.3.183</Version>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
 </Project>

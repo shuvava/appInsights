@@ -8,7 +8,6 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
 using Shuvava.Extensions.Metrics;
-using Shuvava.Extensions.Metrics.Models;
 
 
 namespace getMetrics.CmdApp
@@ -71,6 +70,7 @@ namespace getMetrics.CmdApp
             Console.WriteLine($"GC gen2 count of objects {gen2}");
         }
 
+
         private static void Print<T>(T obj)
         {
             var _settings = new JsonSerializerSettings
@@ -78,9 +78,10 @@ namespace getMetrics.CmdApp
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore,
                 MissingMemberHandling = MissingMemberHandling.Ignore,
-                Formatting = Formatting.Indented,
+                Formatting = Formatting.Indented
             };
-            _settings.Converters.Add(new StringEnumConverter { NamingStrategy = new CamelCaseNamingStrategy() });
+
+            _settings.Converters.Add(new StringEnumConverter {NamingStrategy = new CamelCaseNamingStrategy()});
 
             var result = JsonConvert.SerializeObject(obj, _settings);
             Console.WriteLine($"{nameof(ProcessSystemUsageCollector)}: {result}");
