@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="prometheus-net" Version="3.1.4" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="$(MsOptions)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Shuvava.Extensions.Metrics.HostedService\Shuvava.Extensions.Metrics.HostedService.csproj" />
+    </ItemGroup>
+
+</Project>

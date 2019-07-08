@@ -13,7 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{D9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "getMetrics.CmdApp", "examples\getMetrics.CmdApp\getMetrics.CmdApp.csproj", "{EED03087-4A4F-485C-9ECB-F510251D4D60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shuvava.Extensions.Metrics.Hosting", "src\Shuvava.Extensions.Metrics.Hosting\Shuvava.Extensions.Metrics.Hosting.csproj", "{0BD9C5B9-8E20-4709-A9E7-FE6F7E7134C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shuvava.Extensions.Metrics.HostedService", "src\Shuvava.Extensions.Metrics.HostedService\Shuvava.Extensions.Metrics.HostedService.csproj", "{0BD9C5B9-8E20-4709-A9E7-FE6F7E7134C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shuvava.Extensions.Metrics.Prometheus", "src\Shuvava.Extensions.Metrics.Prometheus\Shuvava.Extensions.Metrics.Prometheus.csproj", "{DCB5D8C6-9F03-4B4C-8E7F-4AB9DA90183F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetMetrics.WebApp", "examples\GetMetrics.WebApp\GetMetrics.WebApp.csproj", "{6F329509-D9BF-4114-A594-3A535EEF34EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,14 @@ Global
 		{0BD9C5B9-8E20-4709-A9E7-FE6F7E7134C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BD9C5B9-8E20-4709-A9E7-FE6F7E7134C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BD9C5B9-8E20-4709-A9E7-FE6F7E7134C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCB5D8C6-9F03-4B4C-8E7F-4AB9DA90183F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCB5D8C6-9F03-4B4C-8E7F-4AB9DA90183F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCB5D8C6-9F03-4B4C-8E7F-4AB9DA90183F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCB5D8C6-9F03-4B4C-8E7F-4AB9DA90183F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F329509-D9BF-4114-A594-3A535EEF34EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F329509-D9BF-4114-A594-3A535EEF34EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F329509-D9BF-4114-A594-3A535EEF34EF}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F329509-D9BF-4114-A594-3A535EEF34EF}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,5 +63,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EED03087-4A4F-485C-9ECB-F510251D4D60} = {D9A77D50-018F-49F2-9C1F-D4D0DA833D34}
 		{87E9FADB-D2FE-4E7D-A745-C32945B6D924} = {D9A77D50-018F-49F2-9C1F-D4D0DA833D34}
+		{6F329509-D9BF-4114-A594-3A535EEF34EF} = {D9A77D50-018F-49F2-9C1F-D4D0DA833D34}
 	EndGlobalSection
 EndGlobal

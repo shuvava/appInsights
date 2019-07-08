@@ -1,3 +1,6 @@
+using System;
+
+
 namespace Shuvava.Extensions.Metrics.Models
 {
     public struct ProcessSystemUsage
@@ -14,6 +17,7 @@ namespace Shuvava.Extensions.Metrics.Models
         /// system.cpu: User % Used
         /// </summary>
         public double UserCpuUsed{ get; set; }
+        public double TotalCpuUsedInMilliseconds { get; set; }
         /// <summary>
         /// system.memory: Working Set
         /// </summary>
@@ -38,5 +42,9 @@ namespace Shuvava.Extensions.Metrics.Models
         /// system.memory: Virtual Memory
         /// </summary>
         public long VirtualMemoryMemory{ get; set; }
+
+        public int HandleCount { get; set; }
+        public int ThreadCount { get; set; }
+        public DateTime ProcessStartTime { get; set; }
     }
 }

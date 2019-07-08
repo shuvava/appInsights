@@ -17,6 +17,7 @@ namespace Shuvava.Extensions.Metrics
 
         public ProcessSystemUsage CollectData()
         {
+            _process.Refresh();
             var totalCpuTimeUsed = _process.TotalProcessorTime.TotalMilliseconds -
                                    _lastTotalProcessorTime.TotalMilliseconds;
 
@@ -37,12 +38,16 @@ namespace Shuvava.Extensions.Metrics
                 TotalCpuUsed = totalCpuTimeUsed * 100 / cpuTimeElapsed,
                 PrivilegedCpuUsed = privilegedCpuTimeUsed * 100 / cpuTimeElapsed,
                 UserCpuUsed = userCpuTimeUsed * 100 / cpuTimeElapsed,
+                TotalCpuUsedInMilliseconds = totalCpuTimeUsed,
                 WorkingSet = _process.WorkingSet64,
                 NonPagedSystemMemory = _process.NonpagedSystemMemorySize64,
                 PagedMemory = _process.PagedMemorySize64,
                 PagedSystemMemory = _process.PagedSystemMemorySize64,
                 PrivateMemory = _process.PrivateMemorySize64,
-                VirtualMemoryMemory = _process.VirtualMemorySize64
+                VirtualMemoryMemory = _process.VirtualMemorySize64,
+                HandleCount = _process.HandleCount,
+                ThreadCount = _process.Threads.Count,
+                ProcessStartTime = _process.StartTime,
             };
         }
     }

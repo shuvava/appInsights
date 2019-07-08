@@ -6,6 +6,7 @@
         <Title>Shuvava.Extensions.Metrics.Hosting</Title>
         <PackageTags>metric GC memory cpu</PackageTags>
         <PackageVersion />
+        <RootNamespace>Shuvava.Extensions.Metrics.Hosting</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
