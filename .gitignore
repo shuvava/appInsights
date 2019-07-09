@@ -332,3 +332,4 @@ ASALocalRun/
 #docker specific
 elasticsearch/data
 prometheus/data
+grafana/data
