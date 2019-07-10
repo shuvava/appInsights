@@ -22,6 +22,7 @@ namespace Shuvava.Extensions.Metrics.Prometheus
         private readonly Gauge _openHandles;
         private readonly AppMetricsSettings _settings;
         private readonly Gauge _startTime;
+        private readonly Gauge _workingSet;
 
 
         public AppMetrics(IOptions<AppMetricsSettings> options) : base(options)
@@ -49,6 +50,7 @@ namespace Shuvava.Extensions.Metrics.Prometheus
 
             _openHandles = global::Prometheus.Metrics.CreateGauge(GetMetricName("process_open_handles"), "Number of open handles");
             _numThreads = global::Prometheus.Metrics.CreateGauge(GetMetricName("process_num_threads"), "Total number of threads");
+            _workingSet = global::Prometheus.Metrics.CreateGauge(GetMetricName("process_working_set_bytes"), "Process working set");
         }
 
 
@@ -80,9 +82,10 @@ namespace Shuvava.Extensions.Metrics.Prometheus
             UpdateMetric(_collectionCounts[0], metrics.GcGen0ObjectCount);
             UpdateMetric(_collectionCounts[1], metrics.GcGen1ObjectCount);
             UpdateMetric(_collectionCounts[2], metrics.GcGen2ObjectCount);
-            _startTime.Set(metrics.ProcessStartTime.Ticks);
+            _startTime.Set(metrics.ProcessStartTime.Subtract(_epoch).TotalSeconds);
             UpdateMetric(_openHandles, metrics.HandleCount);
             UpdateMetric(_numThreads, metrics.ThreadCount);
+            UpdateMetric(_workingSet, metrics.ProcessWorkingSet);
         }
 
 

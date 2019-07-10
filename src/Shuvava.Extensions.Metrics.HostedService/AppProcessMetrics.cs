@@ -7,6 +7,7 @@ namespace Shuvava.Extensions.Metrics.Hosting
     {
         public double CpuUsed { get; set; }
         public long MemoryUsed { get; set; }
+        public long ProcessWorkingSet{ get; set; }
         public int GcGen0ObjectCount { get; set; }
         public int GcGen1ObjectCount { get; set; }
         public int GcGen2ObjectCount { get; set; }

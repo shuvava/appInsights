@@ -51,6 +51,7 @@ namespace Shuvava.Extensions.Metrics.Hosting
             {
                 CpuUsed = sysInfo.TotalCpuUsed,
                 MemoryUsed = DotNetGC.GetTotalMemory(),
+                ProcessWorkingSet = sysInfo.WorkingSet,
                 GcGen0ObjectCount = DotNetGC.CollectionCount(0),
                 GcGen1ObjectCount = DotNetGC.CollectionCount(1),
                 GcGen2ObjectCount = DotNetGC.CollectionCount(2),

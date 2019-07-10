@@ -14,5 +14,6 @@ namespace GetMetrics.WebApp.Controllers.V1
         [HttpGet]
         [ProducesResponseType(typeof(string), 200)]
         public ActionResult<string> Get() => "Hello world!";
+
     }
 }

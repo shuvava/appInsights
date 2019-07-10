@@ -8,30 +8,32 @@ namespace Shuvava.Extensions.Metrics
 {
     public class ProcessSystemUsageCollector
     {
+        private static readonly int processorTotal = Environment.ProcessorCount;
         private readonly Process _process = Process.GetCurrentProcess();
-        private TimeSpan _lastPrivilegedProcessorTime = TimeSpan.Zero;
+        private double _lastPrivilegedProcessorTime;
         private DateTime _lastTimeStamp;
-        private TimeSpan _lastTotalProcessorTime = TimeSpan.Zero;
-        private TimeSpan _lastUserProcessorTime = TimeSpan.Zero;
+        private double _lastTotalProcessorTime;
+        private double _lastUserProcessorTime;
+        private DateTime _newTimeStamp;
 
 
         public ProcessSystemUsage CollectData()
         {
             _process.Refresh();
-            var totalCpuTimeUsed = _process.TotalProcessorTime.TotalMilliseconds -
-                                   _lastTotalProcessorTime.TotalMilliseconds;
+            _newTimeStamp = DateTime.UtcNow;
+            var newTotalProcessorTime = _process.TotalProcessorTime.TotalMilliseconds;
+            var newPrivilegedProcessorTime = _process.PrivilegedProcessorTime.TotalMilliseconds;
+            var newUserProcessorTime = _process.UserProcessorTime.TotalMilliseconds;
 
-            var privilegedCpuTimeUsed = _process.PrivilegedProcessorTime.TotalMilliseconds -
-                                        _lastPrivilegedProcessorTime.TotalMilliseconds;
+            var totalCpuTimeUsed = newTotalProcessorTime - _lastTotalProcessorTime;
+            var privilegedCpuTimeUsed = newPrivilegedProcessorTime - _lastPrivilegedProcessorTime;
+            var userCpuTimeUsed = newUserProcessorTime - _lastUserProcessorTime;
+            var cpuTimeElapsed = _newTimeStamp.Subtract(_lastTimeStamp).TotalMilliseconds * processorTotal;
 
-            var userCpuTimeUsed =
-                _process.UserProcessorTime.TotalMilliseconds - _lastUserProcessorTime.TotalMilliseconds;
-
-            _lastTotalProcessorTime = _process.TotalProcessorTime;
-            _lastPrivilegedProcessorTime = _process.PrivilegedProcessorTime;
-            _lastUserProcessorTime = _process.UserProcessorTime;
-            var cpuTimeElapsed = (DateTime.UtcNow - _lastTimeStamp).TotalMilliseconds * Environment.ProcessorCount;
-            _lastTimeStamp = DateTime.UtcNow;
+            _lastTimeStamp = _newTimeStamp;
+            _lastTotalProcessorTime = newTotalProcessorTime;
+            _lastPrivilegedProcessorTime = newPrivilegedProcessorTime;
+            _lastUserProcessorTime = newUserProcessorTime;
 
             return new ProcessSystemUsage
             {
@@ -46,8 +48,8 @@ namespace Shuvava.Extensions.Metrics
                 PrivateMemory = _process.PrivateMemorySize64,
                 VirtualMemoryMemory = _process.VirtualMemorySize64,
                 HandleCount = _process.HandleCount,
-                ThreadCount = _process.Threads.Count,
-                ProcessStartTime = _process.StartTime,
+                ThreadCount = _process.Threads?.Count ?? 0,
+                ProcessStartTime = _process.StartTime
             };
         }
     }

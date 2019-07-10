@@ -333,3 +333,4 @@ ASALocalRun/
 elasticsearch/data
 prometheus/data
 grafana/data
+bombardier/bombardier-windows-amd64.exe

@@ -1,7 +1,9 @@
 ﻿<Project>
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk.Web" />
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <ThreadPoolMinThreads>100</ThreadPoolMinThreads>
+      <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>$(SolutionDir)build\$(MSBuildProjectName)\bin\$(Configuration)\$(MSBuildProjectName).xml</DocumentationFile>

@@ -33,6 +33,12 @@ namespace GetMetrics.WebApp
         {
             return new WebHostBuilder()
                 .UseKestrel()
+                .UseIISIntegration()
+                .ConfigureKestrel((context, options) =>
+                {
+                    // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2
+                    options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(2);
+                })
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseConfiguration(Configuration)
                 .ConfigureLogging((hostingContext, logging) =>
@@ -42,7 +48,6 @@ namespace GetMetrics.WebApp
                     logging.AddDebug();
                     logging.AddEventSourceLogger();
                 })
-                .UseIISIntegration()
                 .UseStartup<Startup>();
         }
     }
