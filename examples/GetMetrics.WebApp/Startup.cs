@@ -39,6 +39,8 @@ namespace GetMetrics.WebApp
 
             services.AddSwaggerDocumentation();
 
+            services.AddHttpClient();
+
             // add metrics services
             services.Configure<AppMetricsSettings>(Configuration.GetSection("AppMetricsSettings"));
             services.AddHostedService<AppMetrics>();
